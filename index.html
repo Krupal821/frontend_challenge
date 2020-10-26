@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Northern FrontEnd Challenge</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href = "https://fonts.googleapis.com/css?family=Montserrat" rel='stylesheet' type='text/css'>
+    <link href = "https://fonts.googleapis.com/css?family=Merriweather" rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <style>
+        #email,#interest {
+  border-radius: 0 !important;
+            font-family: Merriweather;
+            font-style: italic;
+            font-size: 16px;
+}
+
+        body{
+            background-color: #282828;
+        }
+        .success-msg{
+            font-family: Montserrat;
+            font-weight: bold;
+            font-size: 35px;
+        }
+        h1{
+            font-family: Montserrat;
+            font-weight: bold;
+            font-size: 65px;
+        }
+        p{
+            font-family: Merriweather;
+            font-size: 20px;
+        }
+        .error-msg{
+            float: right;
+            font-family: Merriweather;
+            font-size: 12px;
+        }
+        .divider-line{
+            background-color:  #D02035;
+            height: 12px;
+        }
+        .submit-btn{
+            background-color:  #D02035;
+            font-family: Merriweather;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .error-detect{
+            border-color: #D02035;
+            border-width: 2px;
+        }
+        @media screen and (max-width: 768px) {
+    h1{
+        font-size:45px;
+    }
+}
+    </style>
+    
+</head>
+<body>
+    <div class="mx-4 my-5">
+        <div class="container">
+            <div class="row">
+                    <div class="col-12">
+                        <h1 class="text-uppercase text-white mr-3">Internship Signup Form</h1>
+                        <div class="row">
+                            <div class="col-md-4 col-12">
+                                <hr class="divider-line">
+                            </div>
+                            <div class="offset-md-8"></div>
+                        </div>
+                    </div>
+                    <div class="col-12 my-4">
+                        <p class="success-msg text-white d-none">Thanks for your interest</p>
+                        <p class="text-white msg">Prepare for your career with a Project Management, Web-Development, Graphic design, or Digital Marketing Internship at Northern.</p>
+                    </div>
+                
+            </div>
+            <form name="contact-form" action="#" class="form">
+                <div class="form-row">
+                    <div class="col-6"><small class="text-white error-msg d-none">Please enter a valid email address</small></div>
+                    <div class="offset-md-6"></div>
+                    <div class="col-md-6 pr-md-2 mb-3 mb-md-0">
+                        <input type="text" class="form-control" title="title" id="email" placeholder="Your Email Address *">
+                    </div>
+                    <div class="col-md-6">
+                        <select id="interest" title="your interest" class="form-control custom-select" name="field">
+                            <option value="" disabled selected>Your Interests</option>
+                          <option value="project-management">Project Management</option>
+                          <option value="web-development">Development</option>
+                          <option value="graphic-design">Garphic design</option>
+                          <option value="digital-marketing">Digital Marketing</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row mt-4">
+                    <div class="col-12">
+                        <button type="submit" value="submit" class="btn text-white submit-btn btn-block" id="signIn">Sign Up Now<i class="fas fa-caret-right mx-2"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        $("form").submit(function(e){
+            
+            var userInterest = $('#interest').val();
+            var userEmail = $('#email').val();
+            console.log(userEmail, userInterest);
+            var pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i
+            if(!pattern.test(userEmail))
+                {
+                    e.preventDefault();
+                  $('#email').addClass("error-detect");
+                            $('.error-msg').removeClass("d-none");
+                }
+            else{
+                e.preventDefault();
+                $('#email').removeClass("error-detect");
+                $('.error-msg').addClass("d-none");
+                $('.form').addClass("d-none");
+                $('.success-msg').removeClass("d-none");
+                $('.msg').text("We will review your application and contact you for addition information should your background and experience meet the requirements of one our openings");
+                
+            }
+            });
+    </script>
+</body>
+</html>
